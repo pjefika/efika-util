@@ -13,8 +13,8 @@ import java.nio.charset.Charset;
  */
 public interface HttpDAO<T> {
 
-    public T get(String url, String contentType, Charset responseCharset) throws Exception;
-    
-    public T post(String url, Object obj, String contentType, Charset responseCharset) throws Exception;
-    
+    public T get(String url) throws Exception;
+
+    public T post(String url, Object obj) throws Exception;
+
 }
