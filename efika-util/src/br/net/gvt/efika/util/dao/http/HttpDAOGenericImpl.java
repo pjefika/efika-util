@@ -5,7 +5,9 @@
  */
 package br.net.gvt.efika.util.dao.http;
 
+import br.net.gvt.efika.util.dao.http.exception.ServiceFailureException;
 import br.net.gvt.efika.util.util.json.JacksonMapper;
+import br.net.gvt.efika.util.util.json.exception.JsonParseException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
@@ -38,7 +40,6 @@ public abstract class HttpDAOGenericImpl<T> implements HttpDAO<T> {
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
         HttpGet get = new HttpGet(url);
         get.addHeader("Content-Type", contentType);
-
         HttpResponse response = httpClient.execute(get);
         InputStreamReader reader;
         if (responseCharset != null) {
@@ -48,19 +49,24 @@ public abstract class HttpDAOGenericImpl<T> implements HttpDAO<T> {
         }
         BufferedReader br = new BufferedReader(reader);
         String output;
-        StringBuffer result = new StringBuffer();
+        StringBuilder result = new StringBuilder();
         while ((output = br.readLine()) != null) {
             result.append(output);
         }
-
-        if (response.getStatusLine().getStatusCode() != 200) {
-            JacksonMapper<Exception> exMapper = new JacksonMapper(Exception.class);
-            throw exMapper.deserialize(result.toString());
-        }
         httpClient.close();
 
-        JacksonMapper<T> mapper = new JacksonMapper(typeParameterClass);
-        return mapper.deserialize(result.toString());
+        if (response.getStatusLine().getStatusCode() != 200) {
+            try {
+                JacksonMapper<Exception> exMapper = new JacksonMapper(Exception.class);
+                throw exMapper.deserialize(result.toString());
+            } catch (Exception e) {
+                e.printStackTrace();
+                throw new ServiceFailureException();
+            }
+        } else {
+            JacksonMapper<T> mapper = new JacksonMapper(typeParameterClass);
+            return mapper.deserialize(result.toString());
+        }
     }
 
     @Override
@@ -112,6 +118,7 @@ public abstract class HttpDAOGenericImpl<T> implements HttpDAO<T> {
             result.append(output);
         }
         httpClient.close();
+
         JacksonMapper<T> mapper = new JacksonMapper(typeParameterClass);
         return mapper.deserialize(result.toString());
     }

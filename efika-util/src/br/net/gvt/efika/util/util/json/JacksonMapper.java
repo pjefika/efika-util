@@ -5,6 +5,7 @@
  */
 package br.net.gvt.efika.util.util.json;
 
+import br.net.gvt.efika.util.util.json.exception.JsonParseException;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -23,13 +24,13 @@ public class JacksonMapper<T> {
         this.typeParameterClass = typeParameterClass;
     }
 
-    public T deserialize(String string) throws Exception {
+    public T deserialize(String string) throws JsonParseException {
         ObjectMapper objectMapper = new ObjectMapper();
         try {
             return objectMapper.readValue(string, typeParameterClass);
         } catch (IOException ex) {
             Logger.getLogger(JacksonMapper.class.getName()).log(Level.SEVERE, null, ex);
-            throw new Exception();
+            throw new JsonParseException();
         }
     }
 
