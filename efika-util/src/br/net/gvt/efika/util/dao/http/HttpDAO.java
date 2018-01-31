@@ -5,8 +5,6 @@
  */
 package br.net.gvt.efika.util.dao.http;
 
-import java.nio.charset.Charset;
-
 /**
  *
  * @author G0041775

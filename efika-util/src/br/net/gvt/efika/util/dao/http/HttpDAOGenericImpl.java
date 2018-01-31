@@ -40,11 +40,11 @@ public abstract class HttpDAOGenericImpl<T> implements HttpDAO<T> {
     public T get(String url) throws Exception {
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
         HttpGet get = new HttpGet(url);
-        get.addHeader("Content-Type", contentType);
+        get.addHeader("Content-Type", getContentType());
         HttpResponse response = httpClient.execute(get);
         InputStreamReader reader;
         if (responseCharset != null) {
-            reader = new InputStreamReader(response.getEntity().getContent(), responseCharset);
+            reader = new InputStreamReader(response.getEntity().getContent(), getResponseCharset());
         } else {
             reader = new InputStreamReader(response.getEntity().getContent());
         }
@@ -75,7 +75,6 @@ public abstract class HttpDAOGenericImpl<T> implements HttpDAO<T> {
 
         ResourceBundle rb = ResourceBundle.getBundle("credentials");
 
-        responseCharset = responseCharset == null ? Charset.defaultCharset() : responseCharset;
         InetAddress localMachine = InetAddress.getLocalHost();
 
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
@@ -90,7 +89,7 @@ public abstract class HttpDAOGenericImpl<T> implements HttpDAO<T> {
         context.setCredentialsProvider(credsProvider);
 
         HttpPost post = new HttpPost(url);
-        post.addHeader("Content-Type", contentType + "; charset=UTF-8");
+        post.addHeader("Content-Type", getContentType() + "; charset=UTF-8");
 
         String json = new JacksonMapper(Object.class).serialize(obj);
         System.out.println("URL -> " + url);
@@ -100,7 +99,7 @@ public abstract class HttpDAOGenericImpl<T> implements HttpDAO<T> {
         CloseableHttpResponse response = httpClient.execute(targetHost, post, context);
         InputStreamReader reader;
         if (responseCharset != null) {
-            reader = new InputStreamReader(response.getEntity().getContent(), responseCharset);
+            reader = new InputStreamReader(response.getEntity().getContent(), getResponseCharset());
         } else {
             reader = new InputStreamReader(response.getEntity().getContent());
         }
