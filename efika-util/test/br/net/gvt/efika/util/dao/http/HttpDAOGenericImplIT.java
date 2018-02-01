@@ -5,7 +5,8 @@
  */
 package br.net.gvt.efika.util.dao.http;
 
-import java.nio.charset.Charset;
+import br.net.gvt.efika.util.dao.http.queue.QueueTaskRequest;
+import br.net.gvt.efika.util.util.json.JacksonMapper;
 import org.junit.After;
 import org.junit.AfterClass;
 import org.junit.Before;
@@ -67,6 +68,25 @@ public class HttpDAOGenericImplIT {
             Boolean expResult = false;
             Boolean result = instance.post(url, obj);
             assertEquals(expResult, result);
+        } catch (Exception e) {
+            fail(e.getMessage());
+        }
+    }
+
+    @Test
+    public void testPostToQueue() throws Exception {
+        try {
+            System.out.println("postQueue");
+            String url = "http://localhost:8080/queueAPI/queue/consumePendingTasks";
+            QueueTaskRequest req = new QueueTaskRequest();
+            req.setAmount(5);
+            req.setConsumer("teste efika-util");
+            HttpDAOGenericImpl<Object> instance = new HttpDAOGenericImpl(Object.class) {
+            };
+
+//            Boolean expResult = false;
+            Object result = instance.post(url, req);
+//            assertEquals(expResult, result);
         } catch (Exception e) {
             fail(e.getMessage());
         }

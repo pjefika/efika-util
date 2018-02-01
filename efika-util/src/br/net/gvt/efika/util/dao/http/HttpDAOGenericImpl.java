@@ -31,6 +31,7 @@ public abstract class HttpDAOGenericImpl<T> implements HttpDAO<T> {
     final Class<T> typeParameterClass;
     private String contentType = ContentType.JSON.getValor();
     private Charset responseCharset = Charset.defaultCharset();
+    private ResourceBundle rb = ResourceBundle.getBundle("credentials");
 
     public HttpDAOGenericImpl(Class<T> typeParameterClass) {
         this.typeParameterClass = typeParameterClass;
@@ -39,11 +40,24 @@ public abstract class HttpDAOGenericImpl<T> implements HttpDAO<T> {
     @Override
     public T get(String url) throws Exception {
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
+        InetAddress localMachine = InetAddress.getLocalHost();
+
+        HttpHost targetHost = new HttpHost("192.168.25.89", 8080, "http");
+        CredentialsProvider credsProvider = new BasicCredentialsProvider();
+        credsProvider.setCredentials(
+                new AuthScope(targetHost.getHostName(), targetHost.getPort()),
+                new NTCredentials(rb.getString("login"), rb.getString("password"), localMachine.getHostName(), "gvt.net.br")
+        );
+
+        HttpClientContext context = HttpClientContext.create();
+        context.setCredentialsProvider(credsProvider);
+
         HttpGet get = new HttpGet(url);
         get.addHeader("Content-Type", getContentType());
-        HttpResponse response = httpClient.execute(get);
+        CloseableHttpResponse response = url.contains("localhost") ? httpClient.execute(get) : httpClient.execute(targetHost, get, context);
+
         InputStreamReader reader;
-        if (responseCharset != null) {
+        if (getResponseCharset() != null) {
             reader = new InputStreamReader(response.getEntity().getContent(), getResponseCharset());
         } else {
             reader = new InputStreamReader(response.getEntity().getContent());
@@ -73,8 +87,7 @@ public abstract class HttpDAOGenericImpl<T> implements HttpDAO<T> {
     @Override
     public T post(String url, Object obj) throws Exception {
 
-        ResourceBundle rb = ResourceBundle.getBundle("credentials");
-
+        responseCharset = getResponseCharset() == null ? Charset.defaultCharset() : getResponseCharset();
         InetAddress localMachine = InetAddress.getLocalHost();
 
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
@@ -96,17 +109,18 @@ public abstract class HttpDAOGenericImpl<T> implements HttpDAO<T> {
         System.out.println("POST -> " + json);
         post.setEntity(new StringEntity(json, Charset.forName("UTF-8")));
 
-        CloseableHttpResponse response = httpClient.execute(targetHost, post, context);
+        CloseableHttpResponse response = url.contains("localhost") ? httpClient.execute(post) : httpClient.execute(targetHost, post, context);
+
         InputStreamReader reader;
         if (responseCharset != null) {
-            reader = new InputStreamReader(response.getEntity().getContent(), getResponseCharset());
+            reader = new InputStreamReader(response.getEntity().getContent(), responseCharset);
         } else {
             reader = new InputStreamReader(response.getEntity().getContent());
         }
         BufferedReader br = new BufferedReader(reader);
 
         String output;
-        StringBuilder result = new StringBuilder();
+        StringBuffer result = new StringBuffer();
         while ((output = br.readLine()) != null) {
             System.out.println("OUTPUT -> " + output);
             result.append(output);
@@ -114,6 +128,7 @@ public abstract class HttpDAOGenericImpl<T> implements HttpDAO<T> {
         httpClient.close();
 
         if (response.getStatusLine().getStatusCode() != 200) {
+            System.out.println("CODE -> " + response.getStatusLine().getStatusCode());
             try {
                 JacksonMapper<Exception> exMapper = new JacksonMapper(Exception.class);
                 throw exMapper.deserialize(result.toString());
