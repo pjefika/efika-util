@@ -88,14 +88,20 @@ public abstract class HttpDAOGenericImpl<T> implements HttpDAO<T> {
     public T post(String url, Object obj) throws Exception {
 
         responseCharset = getResponseCharset() == null ? Charset.defaultCharset() : getResponseCharset();
-        InetAddress localMachine = InetAddress.getLocalHost();
+        String maquina;
+        try {
+            InetAddress localMachine = InetAddress.getLocalHost();
+            maquina = localMachine.getHostName();
+        } catch (Exception e) {
+            maquina = "CTARO8-1234";
+        }
 
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
         HttpHost targetHost = new HttpHost("192.168.25.89", 8080, "http");
         CredentialsProvider credsProvider = new BasicCredentialsProvider();
         credsProvider.setCredentials(
                 new AuthScope(targetHost.getHostName(), targetHost.getPort()),
-                new NTCredentials(rb.getString("login"), rb.getString("password"), localMachine.getHostName(), "gvt.net.br")
+                new NTCredentials(rb.getString("login"), rb.getString("password"), maquina, "gvt.net.br")
         );
 
         HttpClientContext context = HttpClientContext.create();
