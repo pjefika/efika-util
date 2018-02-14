@@ -25,35 +25,24 @@ import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 
-public abstract class HttpDAOGenericImpl<T> implements HttpDAO<T> {
+public abstract class HttpDAOGenericNonProxyImpl<T> implements HttpDAO<T> {
 
     final Class<T> typeParameterClass;
     private String contentType = ContentType.JSON.getValor();
     private Charset responseCharset = Charset.defaultCharset();
     private ResourceBundle rb = ResourceBundle.getBundle("credentials");
 
-    public HttpDAOGenericImpl(Class<T> typeParameterClass) {
+    public HttpDAOGenericNonProxyImpl(Class<T> typeParameterClass) {
         this.typeParameterClass = typeParameterClass;
     }
 
     @Override
     public T get(String url) throws Exception {
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-        InetAddress localMachine = InetAddress.getLocalHost();
-
-        HttpHost targetHost = new HttpHost("192.168.25.89", 8080, "http");
-        CredentialsProvider credsProvider = new BasicCredentialsProvider();
-        credsProvider.setCredentials(
-                new AuthScope(targetHost.getHostName(), targetHost.getPort()),
-                new NTCredentials(rb.getString("login"), rb.getString("password"), localMachine.getHostName(), "gvt.net.br")
-        );
-
-        HttpClientContext context = HttpClientContext.create();
-        context.setCredentialsProvider(credsProvider);
 
         HttpGet get = new HttpGet(url);
         get.addHeader("Content-Type", getContentType());
-        CloseableHttpResponse response = url.contains("localhost") ? httpClient.execute(get) : httpClient.execute(targetHost, get, context);
+        CloseableHttpResponse response = httpClient.execute(get);
 
         InputStreamReader reader;
         if (getResponseCharset() != null) {
@@ -96,16 +85,15 @@ public abstract class HttpDAOGenericImpl<T> implements HttpDAO<T> {
         }
 
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-        HttpHost targetHost = new HttpHost("192.168.25.89", 8080, "http");
-        CredentialsProvider credsProvider = new BasicCredentialsProvider();
-        credsProvider.setCredentials(
-                new AuthScope(targetHost.getHostName(), targetHost.getPort()),
-                new NTCredentials(rb.getString("login"), rb.getString("password"), maquina, "gvt.net.br")
-        );
+//        HttpHost targetHost = new HttpHost("192.168.25.89", 8080, "http");
+//        CredentialsProvider credsProvider = new BasicCredentialsProvider();
+//        credsProvider.setCredentials(
+//                new AuthScope(targetHost.getHostName(), targetHost.getPort()),
+//                new NTCredentials(rb.getString("login"), rb.getString("password"), maquina, "gvt.net.br")
+//        );
 
-        HttpClientContext context = HttpClientContext.create();
-        context.setCredentialsProvider(credsProvider);
-
+//        HttpClientContext context = HttpClientContext.create();
+//        context.setCredentialsProvider(credsProvider);
         HttpPost post = new HttpPost(url);
         post.addHeader("Content-Type", getContentType() + "; charset=UTF-8");
 
@@ -114,8 +102,7 @@ public abstract class HttpDAOGenericImpl<T> implements HttpDAO<T> {
         System.out.println("POST -> " + json);
         post.setEntity(new StringEntity(json, Charset.forName("UTF-8")));
 
-        CloseableHttpResponse response = url.contains("localhost") ? httpClient.execute(post) : httpClient.execute(targetHost, post, context);
-
+        CloseableHttpResponse response = httpClient.execute(post);
         InputStreamReader reader;
         if (responseCharset != null) {
             reader = new InputStreamReader(response.getEntity().getContent(), responseCharset);
