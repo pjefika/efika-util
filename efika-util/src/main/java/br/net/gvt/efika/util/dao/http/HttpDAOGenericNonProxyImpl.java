@@ -12,16 +12,10 @@ import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.nio.charset.Charset;
 import java.util.ResourceBundle;
-import org.apache.http.HttpHost;
-import org.apache.http.auth.AuthScope;
-import org.apache.http.auth.NTCredentials;
-import org.apache.http.client.CredentialsProvider;
 import org.apache.http.client.methods.CloseableHttpResponse;
 import org.apache.http.client.methods.HttpGet;
 import org.apache.http.client.methods.HttpPost;
-import org.apache.http.client.protocol.HttpClientContext;
 import org.apache.http.entity.StringEntity;
-import org.apache.http.impl.client.BasicCredentialsProvider;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
 
@@ -30,7 +24,7 @@ public abstract class HttpDAOGenericNonProxyImpl<T> implements HttpDAO<T> {
     final Class<T> typeParameterClass;
     private String contentType = ContentType.JSON.getValor();
     private Charset responseCharset = Charset.defaultCharset();
-    private ResourceBundle rb = ResourceBundle.getBundle("credentials");
+    private final ResourceBundle rb = ResourceBundle.getBundle("credentials");
 
     public HttpDAOGenericNonProxyImpl(Class<T> typeParameterClass) {
         this.typeParameterClass = typeParameterClass;
@@ -85,15 +79,6 @@ public abstract class HttpDAOGenericNonProxyImpl<T> implements HttpDAO<T> {
         }
 
         CloseableHttpClient httpClient = HttpClientBuilder.create().build();
-//        HttpHost targetHost = new HttpHost("192.168.25.89", 8080, "http");
-//        CredentialsProvider credsProvider = new BasicCredentialsProvider();
-//        credsProvider.setCredentials(
-//                new AuthScope(targetHost.getHostName(), targetHost.getPort()),
-//                new NTCredentials(rb.getString("login"), rb.getString("password"), maquina, "gvt.net.br")
-//        );
-
-//        HttpClientContext context = HttpClientContext.create();
-//        context.setCredentialsProvider(credsProvider);
         HttpPost post = new HttpPost(url);
         post.addHeader("Content-Type", getContentType() + "; charset=UTF-8");
 
