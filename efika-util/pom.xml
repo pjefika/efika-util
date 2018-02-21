@@ -40,20 +40,7 @@
             <artifactId>jackson-databind</artifactId>
             <version>2.7.5</version>
         </dependency>
-        
-        <dependency>
-            <groupId>br.net.gvt.efika</groupId>
-            <artifactId>customer</artifactId>
-            <version>1.0.0</version>
-            <exclusions>
-                <exclusion>
-                    <groupId>br.net.gvt.efika</groupId>
-                    <artifactId>fulltest-lib</artifactId>
-                </exclusion>
-            </exclusions>
-        </dependency>
-        
-        
+                
         <!--https://mvnrepository.com/artifact/org.apache.httpcomponents/httpclient -->
         <dependency>
             <groupId>org.apache.httpcomponents</groupId>
