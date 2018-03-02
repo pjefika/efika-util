@@ -17,11 +17,7 @@ public class EfikaResourceBundle {
     }
 
     public static String getString(String bundle, String label) throws Exception {
-        try {
-            ResourceBundle labels = ResourceBundle.getBundle(bundle);
-            return labels.getString(label);
-        } catch (Exception e) {
-            throw new Exception("Arquivo: " + bundle + ".properties inexistente.");
-        }
+        ResourceBundle labels = ResourceBundle.getBundle(bundle);
+        return labels.getString(label);
     }
 }

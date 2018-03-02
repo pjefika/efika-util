@@ -23,15 +23,14 @@ public enum Urls {
     /**
      * QA
      */
-    SERVICE_INVENTORY_SOPHIA("http://10.40.196.182:7173/stealerAPI/serviceInventory/sophia/"),
-    SERVICE_INVENTORY_LEGADO_V1("http://10.40.196.182:7173/stealerAPI/serviceInventory/legado/"),
+    SERVICE_INVENTORY("http://10.40.196.182:7173/stealerAPI/serviceInventory/"),
+    NETWORK_INVENTORY("http://10.40.196.182:7173/stealerAPI/networkInventory/"),
     CADASTRO_STEALER("http://10.40.196.182:7173/stealerAPI/oss/"),
     CADASTRO_NETWORK("http://10.40.195.81:8080/networkInventoryAPI/networkInventory/"),
     FULLTEST("http://10.40.196.182:7172/fulltestAPI/fulltest/co"),
     CONF_REDE("http://10.40.196.182:7172/fulltestAPI/configPorta/getConfiabilidadeRede"),
     ONTS_DISP("http://10.40.196.182:7172/fulltestAPI/configPorta/unsetOntFromOlt"),
     SET_ONT("http://10.40.196.182:7172/fulltestAPI/configPorta/setOntToOlt");
-    
 
     private final String valor;
 
