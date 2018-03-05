@@ -41,7 +41,7 @@ public enum Urls {
     QUEUE_COMPLETE_TASK("http://10.40.196.182:7175/queueAPI/queue/completeTask"),
     QUEUE("http://10.40.196.182:7175/queueAPI/queue/"),
     QUEUE_CONSUME_TASKS("http://10.40.196.182:7175/queueAPI/queue/consumePendingTasks"),
-    AUTH("http://10.40.196.182:8080/efikaAuth2/credencial/verificar");
+    AUTH("http://10.40.198.168:8080/efikaAuth2/credencial/verificar");
 
     private final String valor;
 
