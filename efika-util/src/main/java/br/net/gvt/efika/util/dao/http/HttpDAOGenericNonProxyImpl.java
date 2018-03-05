@@ -114,10 +114,9 @@ public abstract class HttpDAOGenericNonProxyImpl<T> implements HttpDAO<T> {
                 throw new ServiceFailureException();
             }
         } else {
-            JacksonMapper<T> mapper = new JacksonMapper(typeParameterClass);
-            return mapper.deserialize(result.toString());
+            System.out.println("result.toString(): " + result.toString());
+            return new JacksonMapper<>(typeParameterClass).deserialize(result.toString());
         }
-
     }
 
     public String getContentType() {
