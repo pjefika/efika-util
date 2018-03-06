@@ -5,13 +5,13 @@
  */
 package br.net.gvt.efika.util.dao.http;
 
+import br.net.gvt.efika.util.bundle.EfikaResourceBundle;
 import br.net.gvt.efika.util.dao.http.exception.ServiceFailureException;
 import br.net.gvt.efika.util.json.JacksonMapper;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
 import java.nio.charset.Charset;
-import java.util.ResourceBundle;
 import org.apache.http.HttpHost;
 import org.apache.http.auth.AuthScope;
 import org.apache.http.auth.NTCredentials;
@@ -30,7 +30,6 @@ public abstract class HttpDAOGenericImpl<T> implements HttpDAO<T> {
     final Class<T> typeParameterClass;
     private String contentType = ContentType.JSON.getValor();
     private Charset responseCharset = Charset.defaultCharset();
-    private ResourceBundle rb = ResourceBundle.getBundle("credentials");
 
     public HttpDAOGenericImpl(Class<T> typeParameterClass) {
         this.typeParameterClass = typeParameterClass;
@@ -45,7 +44,7 @@ public abstract class HttpDAOGenericImpl<T> implements HttpDAO<T> {
         CredentialsProvider credsProvider = new BasicCredentialsProvider();
         credsProvider.setCredentials(
                 new AuthScope(targetHost.getHostName(), targetHost.getPort()),
-                new NTCredentials(rb.getString("login"), rb.getString("password"), localMachine.getHostName(), "gvt.net.br")
+                new NTCredentials(EfikaResourceBundle.getString("cred", "proxy.login"), EfikaResourceBundle.getString("cred", "proxy.senha"), localMachine.getHostName(), "gvt.net.br")
         );
 
         HttpClientContext context = HttpClientContext.create();
@@ -100,7 +99,7 @@ public abstract class HttpDAOGenericImpl<T> implements HttpDAO<T> {
         CredentialsProvider credsProvider = new BasicCredentialsProvider();
         credsProvider.setCredentials(
                 new AuthScope(targetHost.getHostName(), targetHost.getPort()),
-                new NTCredentials(rb.getString("login"), rb.getString("password"), maquina, "gvt.net.br")
+                new NTCredentials(EfikaResourceBundle.getString("cred", "proxy.login"), EfikaResourceBundle.getString("cred", "proxy.senha"), maquina, "gvt.net.br")
         );
 
         HttpClientContext context = HttpClientContext.create();
