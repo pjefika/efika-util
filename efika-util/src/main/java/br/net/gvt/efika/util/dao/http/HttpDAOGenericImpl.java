@@ -133,13 +133,8 @@ public abstract class HttpDAOGenericImpl<T> implements HttpDAO<T> {
 
         if (response.getStatusLine().getStatusCode() != 200) {
             System.out.println("CODE -> " + response.getStatusLine().getStatusCode());
-            try {
-                JacksonMapper<Exception> exMapper = new JacksonMapper(Exception.class);
-                throw exMapper.deserialize(result.toString());
-            } catch (Exception e) {
-                e.printStackTrace();
-                throw new ServiceFailureException();
-            }
+            JacksonMapper<Exception> exMapper = new JacksonMapper(Exception.class);
+            throw exMapper.deserialize(result.toString());
         } else {
             JacksonMapper<T> mapper = new JacksonMapper(typeParameterClass);
             return mapper.deserialize(result.toString());
