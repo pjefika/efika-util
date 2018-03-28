@@ -11,9 +11,9 @@ package br.net.gvt.efika.util.dao.http;
  */
 public enum Urls {
   
-    QUEUE_COMPLETE_TASK("http://ec2-54-233-253-253.sa-east-1.compute.amazonaws.com:8080/queueAPI/queue/completeTask"),
-    QUEUE("http://ec2-54-233-253-253.sa-east-1.compute.amazonaws.com:8080/queueAPI/queue/"),
-    QUEUE_CONSUME_TASKS("http://ec2-54-233-253-253.sa-east-1.compute.amazonaws.com:8080/queueAPI/queue/consumePendingTasks"),
+    QUEUE_COMPLETE_TASK("http://10.40.196.182:8080/queueAPI/queue/completeTask"),
+    QUEUE("http://10.40.196.182:8080/queueAPI/queue/"),
+    QUEUE_CONSUME_TASKS("http://10.40.196.182:8080/queueAPI/queue/consumePendingTasks"),
     SERVICE_INVENTORY("http://10.40.196.182:7173/stealerAPI/serviceInventory/"),
     NETWORK_INVENTORY("http://10.40.196.182:7173/stealerAPI/networkInventory/"),
     CADASTRO_STEALER("http://10.40.196.182:7173/stealerAPI/oss/"),
