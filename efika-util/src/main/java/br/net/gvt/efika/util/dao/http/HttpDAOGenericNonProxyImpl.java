@@ -7,6 +7,7 @@ package br.net.gvt.efika.util.dao.http;
 
 import br.net.gvt.efika.util.dao.http.exception.ServiceFailureException;
 import br.net.gvt.efika.util.json.JacksonMapper;
+import br.net.gvt.efika.util.json.exception.JsonParseException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
@@ -106,13 +107,8 @@ public abstract class HttpDAOGenericNonProxyImpl<T> implements HttpDAO<T> {
 
         if (response.getStatusLine().getStatusCode() != 200) {
             System.out.println("CODE -> " + response.getStatusLine().getStatusCode());
-            try {
-                JacksonMapper<Exception> exMapper = new JacksonMapper(Exception.class);
-                throw exMapper.deserialize(result.toString());
-            } catch (Exception e) {
-                e.printStackTrace();
-                throw new ServiceFailureException();
-            }
+            JacksonMapper<Exception> exMapper = new JacksonMapper(Exception.class);
+            throw exMapper.deserialize(result.toString());
         } else {
             System.out.println("result.toString(): " + result.toString());
             return new JacksonMapper<>(typeParameterClass).deserialize(result.toString());
