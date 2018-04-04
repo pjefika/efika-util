@@ -19,10 +19,16 @@ import java.util.logging.Logger;
  */
 public class JacksonMapper<T> {
 
-    final Class<T> typeParameterClass;
+    private Class<T> typeParameterClass;
+    
+    private TypeReference<T> type;
 
     public JacksonMapper(Class<T> typeParameterClass) {
         this.typeParameterClass = typeParameterClass;
+    }
+
+    public JacksonMapper(TypeReference<T> type) {
+        this.type = type;
     }
 
     public T deserialize(String string) throws JsonParseException {
@@ -40,8 +46,7 @@ public class JacksonMapper<T> {
         return objectMapper.writeValueAsString(obj);
     }
 
-    public static <T> T fromJSON(final TypeReference<T> type,
-            final String jsonPacket) throws JsonParseException {
+    public <T> T fromJSON(String jsonPacket) throws JsonParseException {
         T data = null;
 
         try {
