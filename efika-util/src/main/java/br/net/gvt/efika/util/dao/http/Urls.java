@@ -23,6 +23,7 @@ public enum Urls {
     ONTS_DISP("http://10.40.196.171:7172/fulltestAPI/configPorta/unsetOntFromOlt"),
     SET_ONT("http://10.40.196.171:7172/fulltestAPI/configPorta/setOntToOlt"),
     GET_ONT("http://10.40.196.171:7172/fulltestAPI/configPorta/getOntFromOlt"),
+    IS_MANAGEABLE("http://10.40.196.171:7172/fulltestAPI/configPorta/isManageable"),
     CUSTOMERAPI_CADASTRO("http://10.40.196.171:7171/customerAPI/customer/findByParameter"),
     CUSTOMERAPI_CERTIFICATION("http://10.40.196.171:7171/customerAPI/certification/execByParam"),
     CUSTOMERAPI_CONF_REDE("http://10.40.196.171:7171/customerAPI/certification/confRede"),
