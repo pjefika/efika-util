@@ -25,6 +25,7 @@ public enum Urls {
     GET_ONT("http://10.40.196.171:7172/fulltestAPI/configPorta/getOntFromOlt"),
     IS_MANAGEABLE("http://10.40.196.171:7172/fulltestAPI/configPorta/isManageable"),
     CORRETOR_ESTADO_PORTA("http://10.40.196.171:7172/fulltestAPI/configPorta/corretorEstadoDaPorta"),
+    CORRETOR_VLAN_BANDA("http://10.40.196.171:7172/fulltestAPI/configPorta/corretorVlanBanda"),
     CUSTOMERAPI_CADASTRO("http://10.40.196.171:7171/customerAPI/customer/findByParameter"),
     CUSTOMERAPI_CERTIFICATION("http://10.40.196.171:7171/customerAPI/certification/execByParam"),
     CUSTOMERAPI_CONF_REDE("http://10.40.196.171:7171/customerAPI/certification/confRede"),
