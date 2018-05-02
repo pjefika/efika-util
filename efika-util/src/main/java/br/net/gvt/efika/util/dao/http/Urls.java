@@ -27,6 +27,7 @@ public enum Urls {
     CORRETOR_ESTADO_PORTA("http://10.40.196.171:7172/fulltestAPI/configPorta/corretorEstadoDaPorta"),
     CORRETOR_VLAN_BANDA("http://10.40.196.171:7172/fulltestAPI/configPorta/corretorVlanBanda"),
     CORRETOR_PROFILE("http://10.40.196.171:7172/fulltestAPI/configPorta/corretorProfile"),
+    CORRETOR_VLANS_VIDEO("http://10.40.196.171:7172/fulltestAPI/configPorta/corretorVlansVideo"),
     CUSTOMERAPI_CADASTRO("http://10.40.196.171:7171/customerAPI/customer/findByParameter"),
     CUSTOMERAPI_CERTIFICATION("http://10.40.196.171:7171/customerAPI/certification/execByParam"),
     CUSTOMERAPI_CONF_REDE("http://10.40.196.171:7171/customerAPI/certification/confRede"),
