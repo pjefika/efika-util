@@ -10,7 +10,7 @@ package br.net.gvt.efika.util.dao.http;
  * @author G0041775
  */
 public enum Urls {
-  
+
     QUEUE_COMPLETE_TASK("http://10.40.196.171:8080/queueAPI/queue/completeTask"),
     QUEUE("http://10.40.196.171:8080/queueAPI/queue/"),
     QUEUE_CONSUME_TASKS("http://10.40.196.171:8080/queueAPI/queue/consumePendingTasks"),
@@ -29,6 +29,7 @@ public enum Urls {
     CORRETOR_PROFILE("http://10.40.196.171:7172/fulltestAPI/configPorta/corretorProfile"),
     CORRETOR_VLANS_VIDEO("http://10.40.196.171:7172/fulltestAPI/configPorta/corretorVlansVideo"),
     CORRETOR_VLAN_VOIP("http://10.40.196.171:7172/fulltestAPI/configPorta/corretorVlanVoIP"),
+    VALIDADOR_PARAMETROS("http://10.40.196.171:7172/fulltestAPI/configPorta/validadorParametros"),
     CUSTOMERAPI_CADASTRO("http://10.40.196.171:7171/customerAPI/customer/findByParameter"),
     CUSTOMERAPI_CERTIFICATION("http://10.40.196.171:7171/customerAPI/certification/execByParam"),
     CUSTOMERAPI_CONF_REDE("http://10.40.196.171:7171/customerAPI/certification/confRede"),
