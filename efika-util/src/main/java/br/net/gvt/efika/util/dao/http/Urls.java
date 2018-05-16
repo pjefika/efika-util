@@ -38,7 +38,27 @@ public enum Urls {
     AUTH("http://10.40.196.171:7176/authAPI/credencial/verificar"),
     NETWORK_INVENTORY_SIGRES_DSLAM_DETAIL("http://10.40.196.171:7174/networkInventoryAPI/networkInventorySigres/dslamDetail"),
     NETWORK_INVENTORY_SIGRES_OLT_DETAIL("http://10.40.196.171:7174/networkInventoryAPI/networkInventorySigres/oltDetail"),
-    NETWORK_INVENTORY_VIZINHOS("http://10.40.196.171:7174/networkInventoryAPI/networkInventoryGpon/vizinhos");
+    NETWORK_INVENTORY_VIZINHOS("http://10.40.196.171:7174/networkInventoryAPI/networkInventoryGpon/vizinhos"),
+    ACSAPI_GET_DETAIL("http://10.40.196.171:7177/acsAPI/detail/detail"),
+    ACSAPI_GET_WIFI("http://10.40.196.171:7177/acsAPI/detail/getWifiInfo"),
+    ACSAPI_SET_WIFI("http://10.40.196.171:7177/acsAPI/detail/setWifiInfo"),
+    ACSAPI_GET_LAN_HOSTS("http://10.40.196.171:7177/acsAPI/detail/getLanHosts"),
+    ACSAPI_GET_WAN("http://10.40.196.171:7177/acsAPI/detail/getWanInfo"),
+    ACSAPI_GET_INTERFACE_STATISTICS("http://10.40.196.171:7177/acsAPI/detail/getInterfaceStatistics"),
+    ACSAPI_GET_XDSL_STATISTICS("http://10.40.196.171:7177/acsAPI/detail/getXdslDiagnostic"),
+    ACSAPI_GET_PPPOE_CRED("http://10.40.196.171:7177/acsAPI/detail/getPPPoECredentials"),
+    ACSAPI_SET_PPPOE_CRED("http://10.40.196.171:7177/acsAPI/detail/setPPPoECredentials"),
+    ACSAPI_GET_PORT_MAPPING("http://10.40.196.171:7177/acsAPI/detail/getPortMapping"),
+    ACSAPI_REBOOT("http://10.40.196.171:7177/acsAPI/detail/reboot"),
+    ACSAPI_FACTORY_RESET("http://10.40.196.171:7177/acsAPI/detail/factoryReset"),
+    ACSAPI_PING("http://10.40.196.171:7177/acsAPI/detail/pingDiagnostic"),
+    ACSAPI_GET_DHCP("http://10.40.196.171:7177/acsAPI/detail/getDhcp"),
+    ACSAPI_SET_DHCP("http://10.40.196.171:7177/acsAPI/detail/setDhcp"),
+    ACSAPI_GET_DDNS("http://10.40.196.171:7177/acsAPI/detail/getDdns"),
+    ACSAPI_GET_SERVICE_CLASS("http://10.40.196.171:7177/acsAPI/detail/getServiceClass"),
+    ACSAPI_SET_SERVICE_CLASS("http://10.40.196.171:7177/acsAPI/detail/setServiceClass"),
+    ACSAPI_GET_SIP("http://10.40.196.171:7177/acsAPI/detail/getSipDiagnostics"),
+    ACSAPI_SET_SIP("http://10.40.196.171:7177/acsAPI/detail/setSipActivation");
 
     private final String valor;
 
