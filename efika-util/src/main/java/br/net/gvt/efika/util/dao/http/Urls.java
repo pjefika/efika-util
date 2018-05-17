@@ -59,7 +59,9 @@ public enum Urls {
     ACSAPI_SET_SERVICE_CLASS("http://10.40.196.171:7177/acsAPI/device/setServiceClass"),
     ACSAPI_GET_SIP("http://10.40.196.171:7177/acsAPI/device/getSipDiagnostics"),
     ACSAPI_SET_SIP("http://10.40.196.171:7177/acsAPI/device/setSipActivation"),
-    ACSAPI_SEARCH("http://10.40.196.171:7177/acsAPI/search/search");
+    ACSAPI_SEARCH("http://10.40.196.171:7177/acsAPI/search/search"),
+    ACSAPI_ONLINE("http://10.40.196.171:7177/acsAPI/device/forceOnlineDevice"),
+    ACSAPI_ANY_ONLINE("http://10.40.196.171:7177/acsAPI/device/forceOnlineDevices");
 
     private final String valor;
 
