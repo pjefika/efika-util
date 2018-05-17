@@ -16,7 +16,7 @@ public enum Urls {
     QUEUE_CONSUME_TASKS("http://10.40.196.171:8080/queueAPI/queue/consumePendingTasks"),
     SERVICE_INVENTORY("http://10.40.196.171:7173/stealerAPI/serviceInventory/"),
     NETWORK_INVENTORY("http://10.40.196.171:7173/stealerAPI/networkInventory/"),
-    CADASTRO_STEALER("http://10.40.196.171:7173/stealerAPI/oss/"),
+    CADASTRO_STEALER("http://10.40.196.172:7173/stealerAPI/oss/"),
     CADASTRO_NETWORK("http://10.40.196.171:7174/networkInventoryAPI/networkInventory/"),
     FULLTEST("http://10.40.196.171:7172/fulltestAPI/fulltest/co"),
     CONF_REDE("http://10.40.196.171:7172/fulltestAPI/configPorta/getConfiabilidadeRede"),
