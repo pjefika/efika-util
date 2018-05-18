@@ -61,7 +61,9 @@ public enum Urls {
     ACSAPI_SET_SIP("http://10.40.196.171:7177/acsAPI/device/setSipActivation"),
     ACSAPI_SEARCH("http://10.40.196.171:7177/acsAPI/search/search"),
     ACSAPI_ONLINE("http://10.40.196.171:7177/acsAPI/device/forceOnlineDevice"),
-    ACSAPI_ANY_ONLINE("http://10.40.196.171:7177/acsAPI/device/forceOnlineDevices");
+    ACSAPI_ANY_ONLINE("http://10.40.196.171:7177/acsAPI/device/forceOnlineDevices"),
+    ACSAPI_GET_DNS("http://10.40.196.171:7177/acsAPI/device/getDns"),
+    ACSAPI_SET_DNS("http://10.40.196.171:7177/acsAPI/device/setDns");
 
     private final String valor;
 
