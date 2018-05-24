@@ -24,10 +24,9 @@ public class JacksonMapper<T> {
 
     private TypeReference<T> type;
 
-    private ObjectMapper objectMapper = new ObjectMapper();
+    private ObjectMapper objectMapper = new ObjectMapper().configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);;
 
     public JacksonMapper(Class<T> typeParameterClass) {
-        this.objectMapper.configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
         this.typeParameterClass = typeParameterClass;
     }
 
