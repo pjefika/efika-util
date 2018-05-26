@@ -40,7 +40,7 @@ public enum Urls {
     NETWORK_INVENTORY_SIGRES_OLT_DETAIL("http://10.40.196.171:7174/networkInventoryAPI/networkInventorySigres/oltDetail"),
     NETWORK_INVENTORY_VIZINHOS("http://10.40.196.171:7174/networkInventoryAPI/networkInventoryGpon/vizinhos"),
     ACSAPI_GET_DETAIL("http://10.40.196.171:7177/acsAPI/device/detail"),
-    ACSAPI_GET_WIFI("http://10.40.196.171:7177/acsAPI/device/getWifiInfo"),
+    ACSAPI_GET_WIFI("http://localhost:7177/acsAPI/device/getWifiInfo"),
     ACSAPI_SET_WIFI("http://10.40.196.171:7177/acsAPI/device/setWifiInfo"),
     ACSAPI_GET_LAN_HOSTS("http://10.40.196.171:7177/acsAPI/device/getLanHosts"),
     ACSAPI_GET_WAN("http://10.40.196.171:7177/acsAPI/device/getWanInfo"),
