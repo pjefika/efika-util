@@ -64,7 +64,8 @@ public enum Urls {
     ACSAPI_ONLINE("http://10.40.196.171:7177/acsAPI/device/forceOnlineDevice"),
     ACSAPI_ANY_ONLINE("http://10.40.196.171:7177/acsAPI/device/forceOnlineDevices"),
     ACSAPI_GET_DNS("http://10.40.196.171:7177/acsAPI/device/getDns"),
-    ACSAPI_SET_DNS("http://10.40.196.171:7177/acsAPI/device/setDns");
+    ACSAPI_SET_DNS("http://10.40.196.171:7177/acsAPI/device/setDns"),
+    ACSAPI_FIRMWARE_UPDATE("http://10.40.196.171:7177/acsAPI/device/firmwareUpdate");
 
     private final String valor;
 
