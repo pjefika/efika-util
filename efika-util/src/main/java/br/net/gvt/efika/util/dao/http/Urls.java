@@ -66,7 +66,9 @@ public enum Urls {
     ACSAPI_GET_DNS("http://10.40.196.171:7177/acsAPI/device/getDns"),
     ACSAPI_SET_DNS("http://10.40.196.171:7177/acsAPI/device/setDns"),
     ACSAPI_FIRMWARE_UPDATE("http://10.40.196.171:7177/acsAPI/device/firmwareUpdate"),
-    ACSAPI_GET_PHONE_NUMBER("http://10.40.196.171:7177/acsAPI/device/getPhoneNumber");
+    ACSAPI_GET_PHONE_NUMBER("http://10.40.196.171:7177/acsAPI/device/getPhoneNumber"),
+    ACSAPI_GET_T38("http://10.40.196.171:7177/acsAPI/device/getT38Enabled"),
+    ACSAPI_SET_T38("http://10.40.196.171:7177/acsAPI/device/setT38Enabled");
 
     private final String valor;
 
