@@ -7,6 +7,7 @@ package br.net.gvt.efika.util.json;
 
 import br.net.gvt.efika.util.json.exception.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
+import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import java.io.IOException;
 import java.util.logging.Level;
@@ -20,8 +21,10 @@ import java.util.logging.Logger;
 public class JacksonMapper<T> {
 
     private Class<T> typeParameterClass;
-    
+
     private TypeReference<T> type;
+
+    private ObjectMapper objectMapper = new ObjectMapper().configure(MapperFeature.ACCEPT_CASE_INSENSITIVE_PROPERTIES, true);
 
     public JacksonMapper(Class<T> typeParameterClass) {
         this.typeParameterClass = typeParameterClass;
@@ -32,7 +35,6 @@ public class JacksonMapper<T> {
     }
 
     public T deserialize(String string) throws JsonParseException {
-        ObjectMapper objectMapper = new ObjectMapper();
         try {
             return objectMapper.readValue(string, typeParameterClass);
         } catch (IOException ex) {
@@ -42,7 +44,6 @@ public class JacksonMapper<T> {
     }
 
     public String serialize(T obj) throws Exception {
-        ObjectMapper objectMapper = new ObjectMapper();
         return objectMapper.writeValueAsString(obj);
     }
 
@@ -50,9 +51,9 @@ public class JacksonMapper<T> {
         T data = null;
 
         try {
-            data = new ObjectMapper().readValue(jsonPacket, type);
+            data = objectMapper.readValue(jsonPacket, type);
         } catch (Exception e) {
-           Logger.getLogger(JacksonMapper.class.getName()).log(Level.SEVERE, null, e);
+            Logger.getLogger(JacksonMapper.class.getName()).log(Level.SEVERE, null, e);
             throw new JsonParseException();
         }
         return data;

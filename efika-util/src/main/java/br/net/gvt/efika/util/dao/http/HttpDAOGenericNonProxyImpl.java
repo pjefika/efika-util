@@ -7,7 +7,6 @@ package br.net.gvt.efika.util.dao.http;
 
 import br.net.gvt.efika.util.dao.http.exception.ServiceFailureException;
 import br.net.gvt.efika.util.json.JacksonMapper;
-import br.net.gvt.efika.util.json.exception.JsonParseException;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
