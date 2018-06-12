@@ -11,9 +11,9 @@ package br.net.gvt.efika.util.dao.http;
  */
 public enum Urls {
 
-    QUEUE_COMPLETE_TASK("http://localhost:8080/queueAPI/queue/completeTask"),
-    QUEUE("http://localhost:8080/queueAPI/queue/"),
-    QUEUE_CONSUME_TASKS("http://localhost:8080/queueAPI/queue/consumePendingTasks"),
+    QUEUE_COMPLETE_TASK("http://54.94.208.183:8080/queueAPI/queue/completeTask"),
+    QUEUE("http://54.94.208.183:8080/queueAPI/queue/"),
+    QUEUE_CONSUME_TASKS("http://54.94.208.183:8080/queueAPI/queue/consumePendingTasks"),
     SERVICE_INVENTORY("http://localhost:7173/stealerAPI/serviceInventory/"),
     NETWORK_INVENTORY("http://localhost:7173/stealerAPI/networkInventory/"),
     CADASTRO_STEALER("http://localhost:7173/stealerAPI/oss/"),
@@ -70,6 +70,7 @@ public enum Urls {
     ACSAPI_GET_T38("http://localhost:7177/acsAPI/device/getT38Enabled"),
     ACSAPI_SET_T38("http://localhost:7177/acsAPI/device/setT38Enabled"),
     ACSAPI_GET_IPTV_DIAGNOSTICS("http://localhost:7177/acsAPI/device/getIptvDiagnostics");
+
 
     private final String valor;
 
