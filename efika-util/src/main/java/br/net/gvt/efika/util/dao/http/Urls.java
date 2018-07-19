@@ -1,7 +1,7 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * and localhostopen the template in the editor.
  */
 package br.net.gvt.efika.util.dao.http;
 
@@ -11,9 +11,9 @@ package br.net.gvt.efika.util.dao.http;
  */
 public enum Urls {
 
-    QUEUE_COMPLETE_TASK("http://localhost:8080/queueAPI/queue/completeTask"),
-    QUEUE("http://localhost:8080/queueAPI/queue/"),
-    QUEUE_CONSUME_TASKS("http://localhost:8080/queueAPI/queue/consumePendingTasks"),
+    QUEUE_COMPLETE_TASK("http://54.94.208.183:8080/queueAPI/queue/completeTask"),
+    QUEUE("http://54.94.208.183:8080/queueAPI/queue/"),
+    QUEUE_CONSUME_TASKS("http://54.94.208.183:8080/queueAPI/queue/consumePendingTasks"),
     SERVICE_INVENTORY("http://localhost:7173/stealerAPI/serviceInventory/"),
     NETWORK_INVENTORY("http://localhost:7173/stealerAPI/networkInventory/"),
     CADASTRO_STEALER("http://localhost:7173/stealerAPI/oss/"),

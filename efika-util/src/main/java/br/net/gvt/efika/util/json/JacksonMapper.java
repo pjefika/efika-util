@@ -37,9 +37,9 @@ public class JacksonMapper<T> {
     public T deserialize(String string) throws JsonParseException {
         try {
             return objectMapper.readValue(string, typeParameterClass);
-        } catch (IOException ex) {
+        } catch (Exception ex) {
             Logger.getLogger(JacksonMapper.class.getName()).log(Level.SEVERE, null, ex);
-            throw new JsonParseException();
+            throw new JsonParseException(ex.getMessage());
         }
     }
 
@@ -54,7 +54,7 @@ public class JacksonMapper<T> {
             data = objectMapper.readValue(jsonPacket, type);
         } catch (Exception e) {
             Logger.getLogger(JacksonMapper.class.getName()).log(Level.SEVERE, null, e);
-            throw new JsonParseException();
+            throw new JsonParseException(e.getMessage());
         }
         return data;
     }
