@@ -15,4 +15,9 @@ public class JsonParseException extends Exception {
         super("JsonParse Exception!");
     }
 
+    public JsonParseException(String message) {
+        super(message);
+    }
+       
+
 }

@@ -1,7 +1,7 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ * and localhostopen the template in the editor.
  */
 package br.net.gvt.efika.util.dao.http;
 
@@ -17,6 +17,7 @@ public enum Urls {
     SERVICE_INVENTORY("http://localhost:7173/stealerAPI/serviceInventory/"),
     NETWORK_INVENTORY("http://localhost:7173/stealerAPI/networkInventory/"),
     CADASTRO_STEALER("http://localhost:7173/stealerAPI/oss/"),
+    ASSIA_CLEARVIEW_STEALER("http://localhost:7173/stealerAPI/assia/clearViewRealTime"),
     CADASTRO_NETWORK("http://localhost:7174/networkInventoryAPI/networkInventory/"),
     FULLTEST("http://localhost:7172/fulltestAPI/fulltest/co"),
     CONF_REDE("http://localhost:7172/fulltestAPI/configPorta/getConfiabilidadeRede"),
