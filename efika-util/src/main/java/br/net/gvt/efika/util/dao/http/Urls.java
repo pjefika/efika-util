@@ -1,7 +1,7 @@
 /*
  * To change this license header, choose License Headers in Project Properties.
  * To change this template file, choose Tools | Templates
- * and localhostopen the template in the editor.
+ * and 10.40.168.198open the template in the editor.
  */
 package br.net.gvt.efika.util.dao.http;
 
@@ -20,6 +20,7 @@ public enum Urls {
     ASSIA_CLEARVIEW_STEALER("http://localhost:7173/stealerAPI/assia/clearViewRealTime"),
     CADASTRO_NETWORK("http://localhost:7174/networkInventoryAPI/networkInventory/"),
     FULLTEST("http://localhost:7172/fulltestAPI/fulltest/co"),
+    FULLTEST_BY_ID("http://localhost:7172/fulltestAPI/fulltest/findById/"),
     CONF_REDE("http://localhost:7172/fulltestAPI/configPorta/getConfiabilidadeRede"),
     ONTS_DISP("http://localhost:7172/fulltestAPI/configPorta/unsetOntFromOlt"),
     SET_ONT("http://localhost:7172/fulltestAPI/configPorta/setOntToOlt"),

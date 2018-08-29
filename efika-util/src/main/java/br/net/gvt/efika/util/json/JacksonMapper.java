@@ -9,7 +9,6 @@ import br.net.gvt.efika.util.json.exception.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
-import java.io.IOException;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
