@@ -17,6 +17,8 @@ public enum Urls {
     SERVICE_INVENTORY("http://localhost:7173/stealerAPI/serviceInventory/"),
     NETWORK_INVENTORY("http://localhost:7173/stealerAPI/networkInventory/"),
     CADASTRO_STEALER("http://localhost:7173/stealerAPI/oss/"),
+    LIST_STB_STEALER("http://localhost:7173/stealerAPI/confOnline/listStbs"),
+    DIAGNOSTICO_HPNA_STEALER("http://localhost:7173/stealerAPI/confOnline/diagnosticoHpna"),
     ASSIA_CLEARVIEW_STEALER("http://localhost:7173/stealerAPI/assia/clearViewRealTime"),
     CADASTRO_NETWORK("http://localhost:7174/networkInventoryAPI/networkInventory/"),
     FULLTEST("http://localhost:7172/fulltestAPI/fulltest/co"),
