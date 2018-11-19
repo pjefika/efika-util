@@ -7,6 +7,8 @@ package br.net.gvt.efika.util.dao.http;
 
 import br.net.gvt.efika.util.dao.http.exception.ServiceFailureException;
 import br.net.gvt.efika.util.json.JacksonMapper;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
 import java.net.InetAddress;
@@ -18,6 +20,7 @@ import org.apache.http.client.methods.HttpPost;
 import org.apache.http.entity.StringEntity;
 import org.apache.http.impl.client.CloseableHttpClient;
 import org.apache.http.impl.client.HttpClientBuilder;
+import org.json.JSONObject;
 
 public abstract class HttpDAOGenericNonProxyImpl<T> implements HttpDAO<T> {
 
@@ -82,7 +85,17 @@ public abstract class HttpDAOGenericNonProxyImpl<T> implements HttpDAO<T> {
         HttpPost post = new HttpPost(url);
         post.addHeader("Content-Type", getContentType() + "; charset=UTF-8");
 
-        String json = new JacksonMapper(Object.class).serialize(obj);
+        String json = null;
+        try {
+            json = new JacksonMapper(Object.class).serialize(obj);
+        } catch (Exception e) {
+            Gson gson = new GsonBuilder()
+                    .setDateFormat("EEE, dd MMM yyyy HH:mm:ss zzz").create();
+            String nJson = gson.toJson(obj);
+            JSONObject oJson = new JSONObject(nJson);
+            json = oJson.toString();
+            e.printStackTrace();
+        }
         System.out.println("URL -> " + url);
         System.out.println("POST -> " + json);
         post.setEntity(new StringEntity(json, Charset.forName("UTF-8")));

@@ -9,6 +9,7 @@ import br.net.gvt.efika.util.json.exception.JsonParseException;
 import com.fasterxml.jackson.core.type.TypeReference;
 import com.fasterxml.jackson.databind.MapperFeature;
 import com.fasterxml.jackson.databind.ObjectMapper;
+import com.google.gson.Gson;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 
@@ -37,8 +38,9 @@ public class JacksonMapper<T> {
         try {
             return objectMapper.readValue(string, typeParameterClass);
         } catch (Exception ex) {
+            Gson gson = new Gson();
             Logger.getLogger(JacksonMapper.class.getName()).log(Level.SEVERE, null, ex);
-            throw new JsonParseException(ex.getMessage());
+            throw new JsonParseException(gson.toJson(string));
         }
     }
 
