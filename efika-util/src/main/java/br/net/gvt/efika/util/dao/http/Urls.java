@@ -43,6 +43,7 @@ public enum Urls {
     NETWORK_INVENTORY_SIGRES_DSLAM_DETAIL("http://localhost:7174/networkInventoryAPI/networkInventorySigres/dslamDetail"),
     NETWORK_INVENTORY_SIGRES_OLT_DETAIL("http://localhost:7174/networkInventoryAPI/networkInventorySigres/oltDetail"),
     NETWORK_INVENTORY_VIZINHOS("http://localhost:7174/networkInventoryAPI/networkInventoryGpon/vizinhos"),
+    NETWORK_INVENTORY_INVENTORY("http://localhost:7174/networkInventoryAPI/networkInventory/"),
     ACSAPI_GET_DETAIL("http://localhost:7177/acsAPI/device/detail"),
     ACSAPI_GET_WIFI("http://localhost:7177/acsAPI/device/getWifiInfo"),
     ACSAPI_ACTIVATE_WIFI("http://localhost:7177/acsAPI/device/activateWifi"),
