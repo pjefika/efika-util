@@ -74,7 +74,8 @@ public enum Urls {
     ACSAPI_GET_PHONE_NUMBER("http://localhost:7177/acsAPI/device/getPhoneNumber"),
     ACSAPI_GET_T38("http://localhost:7177/acsAPI/device/getT38Enabled"),
     ACSAPI_SET_T38("http://localhost:7177/acsAPI/device/setT38Enabled"),
-    ACSAPI_GET_IPTV_DIAGNOSTICS("http://localhost:7177/acsAPI/device/getIptvDiagnostics");
+    ACSAPI_GET_IPTV_DIAGNOSTICS("http://localhost:7177/acsAPI/device/getIptvDiagnostics"),
+    ACSAPI_SET_LANIPv6AUTO("http://localhost:7177/acsAPI/device/setLanIPv6");
 
     private final String valor;
 
